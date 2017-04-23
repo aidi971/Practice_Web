@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="Generator" content="Atom">
+  <meta name="Author" content="tickCoder">
+  <meta name="Keywords" content="html5 css jquery js">
+  <meta name="Description" content="practice of html5, css, jquery, js">
+
+  <!-- meta标签有http-equiv和name属性，其属性值放置在与之对应的content属性中 -->
+  <!-- http-equiv相当于http协议文件头的作用，通过该属性可以向浏览器回传数据信息，以帮助准确显示网页内容 -->
+  <!-- name属性主要用于描述网页，包括分类信息的内容以便于搜索引擎robots协议查找的内容 -->
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="content-language" content="zh-cn"/>
+
+  <!-- 设定网页过期时间，如果网页过期则必须连接服务器进行重新连接 -->
+  <!-- 必须使用GMT时间格式 -->
+  <!-- <meta http-equiv="expires" content="Sun, 31 Dec 2015 23:59:59 GMT"> -->
+
+  <!-- 禁止浏览器从本地计算机的缓存中访问html网页的内容 -->
+  <!-- 使用no-cache后，用户将无法脱机浏览网页 -->
+  <!-- <meta http-equiv="Pragma" content="no-cache" /> -->
+
+  <!-- 如果网页过期，则保存在本地的全部cookie将被自动删除 -->
+  <!-- 必须使用GMT时间格式 -->
+  <!-- <meta http-equiv="Set-Cookie" content="cookie-value=xxx;expires=Sun, 31 Dec 2015 23:59:59 GMT"/> -->
+
+  <!-- 强制html网页在当前窗口以独立页面方式显示 -->
+  <!-- 用来防止外部页面在框架里调用本页 -->
+  <meta http-equiv="Window-target" content="top"/>
+
+  <!-- 5秒后跳转到www.baidu.com -->
+  <!-- <meta http-equiv="refresh" content="5;url=https://www.baidu.com"/> -->
+
+  <!-- 网页默认打开方式的声明，href可以留空 -->
+  <base href="http://localhost:8888/chapter01/" target="_blank"/>
+
+  <!-- 用于定义目标文件链接，包括css文件的引用，对外部js文件的引用，对favicon.icon图标的引用等 -->
+  <link rel="icon" href="../favicon-128x128.ico" mce_href="favicon-128x128.ico" type="image/x-icon"/>
+  <link rel="bookmark" href="../favicon-128x128.ico" mce_href="favicon-128x128.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="../favicon-128x128.ico" mce_href="favicon-128x128.ico" type="image/x-icon"/>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+  <!-- 用于定义直接嵌入网页的css代码 -->
+  <style type="text/css">
+    h1 {font: bold 24px/2.4em arial, verdana;}
+    h3 {font: bold 18px/1.8em arial, verdana;}
+    p {font: italic bold 13.5px/1.2em arial, verdana;}
+  </style>
+  <script type="text/javascript">
+    document.write("<h1>html head1 标签</h1>");
+  </script>
+  <title>chapter01</title>
+</head>
+<script type="text/javascript">
+  function initBody() {
+    document.getElementById('id-content').innerHTML = "<p>初始化时动态添加页面内容!</br>在页面初始化后body标签是最先加载的标签，可以在body标签中定义onload事件属性，完成页面加载后立即执行js脚本。</p>";
+  }
+</script>
+<body onload="initBody();">
+  <h3>this is header 3</h3>
+  <p>this is paragraph.</p>
+  <p>
+    <a href="ch01-htmlcomp-init.html">本窗口打开链接</a><br/><br/>
+    说明：<br/>正常应该在当前窗口打开该链接，但是机在新窗口中打开了。<br/>
+    原因是在本html网页头部中，base标签设置了target="_blank"属性<br/>
+  </p>
+  <div id="id-content"></div>
+</body>
+</html>
