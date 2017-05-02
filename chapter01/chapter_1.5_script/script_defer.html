@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>推迟javascript脚本执行</title>
+  </head>
+  <body>
+    <p>推迟javascript脚本执行-defer属性</p>
+    <hr>
+
+    <script id="id-script-nodefer" type="text/javascript" src="js/nodefer.js"></script>
+    <div id="id-div-nodefer">no defer script log:</div>
+
+    <hr>
+
+    <script id="id-script-defer" type="text/javascript" src="js/defer.js" defer></script>
+    <div id="id-div-defer">defer script log:</div>
+
+    <script type="text/javascript">
+      document.getElementById("id-div-nodefer").innerHTML+="<h3>defer value is " + document.getElementById("id-script-nodefer").defer + "</h3>";
+      document.getElementById("id-div-defer").innerHTML+="<h3>defer value is "+document.getElementById("id-script-defer").defer+"</h3>";
+    </script>
+
+  </body>
+</html>

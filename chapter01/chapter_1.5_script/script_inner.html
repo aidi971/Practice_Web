@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <style type="text/css">
+      div {
+        margin: 2px;
+        padding: 2px;
+        width: auto;
+        height: auto;
+        border: 1px solid #000;
+      }
+    </style>
+    <script type="text/javascript">
+      // 打开一个输出流
+      document.write("<h5>logxxx: header - script</h5>");
+      // 关闭输出流
+      document.close();
+      // 这段执行失败，因为id-div-header还没有定义（header中定义的script在html的dom树被解析前被执行）
+      document.getElementById("id-div-header").innerHTML+="<br><h3>xxx header-script</h3>";
+    </script>
+    <title>内嵌javascript脚本</title>
+  </head>
+  <body>
+    <h3>内嵌javascript脚本</h3>
+    <div id="id-div-header">header script log:</div>
+
+
+    <script type="text/javascript">
+      document.write("<h5>logyyyy: dynamic - script</h5>");
+      document.write("<div id='id-div-dynamic'>dynamic script log:</div>");
+      document.close();
+      document.getElementById("id-div-dynamic").innerHTML+="<h3>yyyy: dynamic-script</h3>";
+    </script>
+
+
+    <div id="id-div-body">body script log:</div>
+    <script type="text/javascript">
+      document.write("<h5>logzzzz: body-script</h5>");
+      document.close();
+      document.getElementById("id-div-body").innerHTML+="<br><h3>zzzz: body-script</h3>";
+    </script>
+  </body>
+</html>
+
+<!-- javascript脚本的执行顺序遵循几大原则：
+
+1.按顺序载入
+2.载入即执行
+3.执行时会阻塞后续内容
+一般建议将自定义脚本放到body标签的最后或html网页的最后，这样可以保证全部html网页dom树载入后，再执行脚本。
+
+当然javascript实际运用时非常复杂，上面几个为基本原则。
+ -->

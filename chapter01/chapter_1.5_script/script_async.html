@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <!-- 如注释此行，保留下行，然后运行，则页面与alert同时显示，表示是异步执行的 -->
+    <script id="id-script-noasync" type="text/javascript" src="js/noasync.js"></script>
+
+    <!-- 若注释此行、保留上行，然后运行，则会先显示alert，不显示页面内容，之后点击确定后，才显示页面内容，表示是阻塞执行的 -->
+    <script id="id-script-async" type="text/javascript" src="js/async.js" async></script>
+    <title>异步执行javascript脚本</title>
+  </head>
+  <body>
+    <p>异步执行javascript脚本</p>
+    <p>aysnc属性规定一旦脚本可用，则会异步执行</p>
+    <p>async属性仅适用于外部脚本(只有在使用src属性时)</p>
+    <p>阻塞执行、异步执行</p>
+
+    <hr>
+
+    <p>
+      关于defer与async关系：<br><br>
+      1.如果定义async，则脚本相对于页面的其余部分异步执行（当页面继续进行解析时，脚本将被执行）；<br>
+      2.如果未定义async，但定义了refer，脚本将在页面完成解析时执行；<br>
+      3.如果既不定义async，也不定义refer，则在浏览器继续解析页面之前，立即以阻塞方式读取并执行脚本；<br>
+    </p>
+  </body>
+</html>
