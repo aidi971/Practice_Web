@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style type="text/css">
+      div {
+        margin: 2px;
+        padding: 2px;
+        width: auto;
+        height: auto;
+        border: 1px solid #e0e0e0;
+        background: #f0f0f0;
+      }
+    </style>
+    <script type="text/javascript">
+      function isSupport(prop) {
+        return prop in document.createElement('div');
+      }
+    </script>
+    <script type="text/javascript">
+      if (typeof(Worker) !== "undefine") {
+        alert("此浏览器支持html5属性");
+      } else {
+        alert("此浏览器支持不html5属性");
+      }
+    </script>
+    <title>测试浏览器对html5属性的支持</title>
+  </head>
+  <body>
+    <h1>测试浏览器对html5属性的支持</h1>
+    <hr>
+    <div id="id-div">层(div)标签：<br><br></div>
+    <script type="text/javascript">
+      var prop = ["id", "name", "value", "type", "style", "title"];
+      for (var i in prop) {
+        isSupportProp(prop[i]);
+      }
+      function isSupportProp(v) {
+        if (isSupport(v)) {
+          document.getElementById("id-div").innerHTML+="属性" + v +"\t支持<br>";
+        } else {
+          document.getElementById("id-div").innerHTML+="属性" + v +"\t不支持<br>";
+        }
+      }
+    </script>
+  </body>
+</html>
