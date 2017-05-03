@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <style type="text/css">
+      div {
+        margin: 2px;
+        padding: 2px;
+        width: auto;
+        height: auto;
+        border: 1px solid #000;
+      }
+      p.classnormal {
+        margin: 4px;
+        padding: 2px;
+        width: 196px;
+        font: normal 13.5px/1.2em arial,verdana;
+      }
+      p.classitalic {
+        margin: 4px;
+        padding: 2px;
+        width: 196px;
+        font: italic 13.5px/1.2em arial,verdana;
+      }
+      p.classbold {
+        margin: 4px;
+        padding: 2px;
+        width: 196px;
+        font: bold 13.5px/1.2em arial,verdana;
+      }
+    </style>
+    <title>id-name-class</title>
+  </head>
+  <body>
+    <h3>id name class 标签</h3><br><br><br><br>
+
+
+    id:<hr>
+    <div>id标签必须是唯一的，可以定义锚链接(link anchor)、对象等</div>
+    <div id="id-div">这里是原div内容</div>
+    <script type="text/javascript">
+      document.getElementById("id-div").innerHTML+="【这里是通过javascript追加的文字】";
+    </script>
+
+    <br><br><br><br>name:<hr>
+    <div>name主要用于定义表单域内标签，如input、select、textarea、frame、window、button等</div>
+    <div>这些标签都与表单提交相关，一般服务器只接收表单内具有name属性的元素，所以仅仅具有id属性的标签无法通过表单服务器端接收</div>
+    <div>getElementsByName, 注意有个 <a style="color:red;">s</a></div>
+    <label>input数组：</label><br>
+    <input type="radio" name="name-radio-x" value="yyyy"/>yyyyy<br>
+    <input type="text" name="name-input" value="input0"/><br>
+    <input type="text" name="name-input" value="input1"/><br>
+    <input type="text" name="name-input" value="input2"/><br>
+    <input type="text" name="name-input" value="input3"/><br>
+    <input type="text" name="name-input" value="input4"/><br>
+    <input type="text" name="name-input" value="input5"/><br>
+    <input type="text" name="name-input" value="input6"/><br><br>
+    input数组长度：<input type="text" id="id-input" value=""/><br>
+    <script type="text/javascript">
+      var len = document.getElementsByName("name-input").length;
+      document.getElementById("id-input").value=len;
+    </script>
+
+    <br><br><br><br>name-radio:<hr>
+    <input type="radio" name="name-radio-x" value="xxxx"/>xxxx<br>
+    <div>radio-input</div>
+    <label>选择一个(整个页面范围内name相同时为一组？？？？)</label><br>
+    <input type="radio" name="name-radio" value="css"/>css<br>
+    <input type="radio" name="name-radio" value="jquery"/>jquery<br>
+    <input type="radio" name="name-radio" value="objectivec"/>objective-c<br><br>
+
+
+    <br><br><br><br>class<hr>
+    <div>
+      用于定义类名，一般该类名就是指向CSS样式表中定义的类<br>
+      那么，既然css中的类可以被定义于标签，<br>
+      我们就可以通过javascript脚本语言对其进行增加、修改、删除<br>
+      从而实现动态改变样式类的功能。<br>
+      但是，不是全部标签都可以使用class属性，如：<br>
+      base、html、head、script、style、title等标签不支持该属性<br><br>
+
+      <button type="button" id="id-button-normal" onclick="on_normal_click();">
+        change to normal style
+      </button>
+      <button type="button" id="id-button-italic" onclick="on_italic_click();">
+        change to italic style
+      </button>
+      <button type="button" id="id-button-bold" onclick="on_bold_click();">
+        change to bold style
+      </button>
+      <p class="classnormal">class-normal</p>
+      <p class="classnormal">class-normal</p>
+      <p class="classnormal">class-normal</p>
+      <p class="classnormal">class-normal</p>
+      <p class="classnormal">class-normal</p>
+      <script type="text/javascript">
+        function on_normal_click() {
+          for (i=0;i<5;i++) {
+            document.getElementsByTagName("p")[i].className="classnormal";
+            document.getElementsByTagName("p")[i].innerHTML="class-----normal";
+          }
+        }
+        function on_italic_click() {
+          for (i=0;i<5;i++) {
+            document.getElementsByTagName("p")[i].className="classitalic";
+            document.getElementsByTagName("p")[i].innerHTML="class-----italic";
+          }
+        }
+        function on_bold_click() {
+          for (i=0;i<5;i++) {
+            document.getElementsByTagName("p")[i].className="classbold";
+            document.getElementsByTagName("p")[i].innerHTML="class-----bold";
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
