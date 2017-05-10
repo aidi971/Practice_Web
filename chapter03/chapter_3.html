@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h3>html5 input type=email</h3>
+    <form action="#" method="get" autocomplete="on">
+      <label for="name">username:</label>
+      <input type="text" id="name"/><br>
+      <label for="pwd">password:</label>
+      <input type="password" id="pwd"/><br>
+      <label for="email">email:</label>
+      <input type="email" id="email" autocomplete="off"/><br>
+      <input type="submit">
+    </form>
+    <hr>
+
+    <h3>html5 input type=url</h3>
+    <form action="#" method="get">
+      <label for="url">url:</label>
+      <input type="url">
+      <input type="submit">
+    </form>
+    <hr>
+
+    <h3>html5 input type=number min max step</h3>
+    <form action="#" method="get">
+      <label for="year">year: </label>
+      <input id="year" type="number" min="1900" max="9999" step="1" value="1900" style="width:200px"></input></br>
+      <label for="month">month: </label>
+      <input id="month" type="number" min="1" max="12" step="1" value="1" style="width:200px"></input></br>
+      <label for="day">day: </label>
+      <input id="day" type="number" min="1" max="31" step="1" value="1" style="width:200px"></input></br>
+      <input type="submit" value="提交">
+    </form>
+    <hr>
+
+    <h3>html5 input type=date month week time datetime<br> (Safari都不支持，Chrome不支持datetime)</h3>
+    <form action="#" method="get">
+      <label for="id-date">date: </label>
+      <input type="date" id="id-date" name="user_date"/><br>
+      <label for="id-month">month: </label>
+      <input type="month" id="id-month" name="user_month"/><br>
+      <label for="id-week">week: </label>
+      <input type="week" id="id-week" name="user_week"/><br>
+      <label for="id-time">time: </label>
+      <input type="time" id="id-time" name="user_time"/><br>
+      <label for="id-datetime">datetime: </label>
+      <input type="datetime" id="id-datetime" name="user_datetime"/><br>
+      <input type="submit" value="提交">
+    </form>
+    <hr>
+
+    <h3>html5 datalist (Chrome支持，Safari不支持)</h3>
+    <form action="#" method="post">
+      <label for="id-datalist">DateList: </label>
+      <input id="id-datalist" list="web">
+      <datalist id="web">
+        <option value="html5"></option>
+        <option value="jquery"></option>
+        <option value="javascript"></option>
+        <option value="node"></option>
+      </datalist>
+    </form>
+    <hr>
+
+  </body>
+</html>
