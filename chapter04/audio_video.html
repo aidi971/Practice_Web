@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>多媒体</title>
+  </head>
+  <body>
+
+    <header>
+      <nav>
+        html5多媒体
+      </nav>
+    </header>
+
+    <div>
+      <h5>html5音频播放</h5>
+      <audio src="media/Bitter Bitter Sweet.mp3" controls="controls">
+        该浏览器不支持audio标签
+      </audio>
+    </div>
+    <br>
+
+    <div>
+      <h5>html5视频播放</h5>
+      <button onclick="playPause()">播放/暂停</button><br>
+      <video id="id-video" style="margin-top:4px; width:auto; height:auto" controls="controls">
+        <source src="media/video.mp4" type="video/mp4"/>
+        该浏览器不支持video标签
+      </video>
+    </div>
+
+    <script type="text/javascript">
+      var vVideo=document.getElementById("id-video");
+      function playPause(){
+        if (vVideo.paused) {
+          vVideo.play();
+        } else {
+          vVideo.pause();
+        }
+      }
+    </script>
+
+  </body>
+</html>
