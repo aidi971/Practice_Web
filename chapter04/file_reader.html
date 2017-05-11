@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style type="text/css">
+      html {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 100%;
+      }
+      form {
+        margin-top: 4px;
+        width: 100%;
+        height: auto;
+      }
+      legend {
+        margin: 4px;
+      }
+      h5 {
+        margin: 4px;
+      }
+      article {
+        margin: 4px;
+      }
+      #fileContentArea {
+        margin-top: 4px;
+        width: 100%;
+      }
+    </style>
+    <title>FileReader</title>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>读取本地文本文件：</legend>
+        <input type="file" name="fileReader" id="fileReader"
+        onchange="fileReader_readAsText(this.files);" /><br>
+        <h5>文本文件内容：</h5>
+        <article id="fileContentArea"></article>
+      </fieldset>
+    </form>
+
+    <script type="text/javascript">
+      function fileReader_readAsText(fr) {
+        if (typeof FileReader == 'undefined') {
+          alert("该浏览器不支持FileReader对象");
+        }
+        var tmpFile = fr[0];
+        var reader = new FileReader();
+        reader.readAsText(tmpFile, 'utf-8');
+        reader.onload = function(e) {
+        document.getElementById("fileContentArea").innerHTML = "<pre>"+e.target.result+"</pre>";
+      }
+    }
+    </script>
+
+  </body>
+</html>
