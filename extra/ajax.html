@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+      function ajaxRequest() {
+        // ajax script here
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+          xmlhttp=new XMLHttpRequest();
+        } else {
+          // IE5、IE6
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            // responseXML - getElementsByTagName("title")
+            document.getElementById("x-h3").innerHTML=xmlhttp.responseText;
+          } else {
+            document.getElementById("x-h3").innerHTML="cannot get data from 'ajax/ajax_responser.txt'";
+          }
+        }
+        // 为了避免请求到缓存，向URL添加一个唯一的ID
+        xmlhttp.open("GET", "ajax/ajax_responser.txt?t="+Math.random(), true);
+        //xmlhttp.open("GET", "ajax/ajax_responser.txt", true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send();
+      }
+
+      function ajaxRequestXml() {
+        var xmlhttp;
+        var txt,x,i;
+        if (window.XMLHttpRequest) {
+          xmlhttp = new XMLHttpRequest();
+        } else {
+          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            xmlDoc=xmlhttp.responseXML;
+            console.log("%s", xmlDoc);
+            txt="";
+            x=xmlDoc.getElementsByTagName("author");
+            for (i=0;i<x.length;i++) {
+              txt=txt + x[i].childNodes[0].nodeValue + "<br />";
+            }
+            document.getElementById("x-h3-2").innerHTML=txt;
+          } else {
+          }
+        }
+        // 为了避免请求到缓存，向URL添加一个唯一的ID
+        xmlhttp.open("GET", "http://www.w3school.com.cn/example/xmle/books.xml", true);
+        //xmlhttp.open("GET", "ajax/ajax_responser.txt", true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send();
+      }
+
+    </script>
+    <title>ajax</title>
+  </head>
+  <body>
+
+    <h2>需要是服务器环境，本地网页不行</h2>
+
+    <hr>
+
+    <div id="x-div">
+      <h3 id="x-h3">here will put ajax request result</h3>
+    </div>
+    <button type="button" onclick="ajaxRequest()">ajaxRequest</button>
+
+    <hr>
+
+    <div id="x-div-2">
+      <h3 id="x-h3-2">here will put ajax request result</h3>
+    </div>
+    <button type="button" onclick="ajaxRequestXml()">ajaxRequestXml</button>
+
+  </body>
+</html>
