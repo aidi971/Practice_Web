@@ -48,8 +48,22 @@
         var reader = new FileReader();
         reader.readAsText(tmpFile, 'utf-8');
         reader.onload = function(e) {
-        document.getElementById("fileContentArea").innerHTML = "<pre>"+e.target.result+"</pre>";
-      }
+          alert("success reading");
+          document.getElementById("fileContentArea").innerHTML = "<pre>"+e.target.result+"</pre>";
+        }
+        reader.onerror = function(e) {
+          alert("error" + e.target.result);
+        }
+        reader.onloadstart = function(e) {
+          alert("start reading");
+        }
+        reader.onloadend = function(e) {
+          alert("finish reading");
+        }
+        reader.onprogress = function(e) {
+          console.log("reading ......\n\n\n\n\n");
+          console.log("%s", e.target.result);
+        }
     }
     </script>
 
