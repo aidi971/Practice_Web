@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style type="text/css">
+      canvas {
+        margin: 4px;
+        border: 1px solid black;
+      }
+    </style>
+    <title>html5画布-canvas</title>
+  </head>
+  <body>
+    <header><nav>canvas画布</nav></header>
+
+    <div>
+      <canvas id="id-canvas" width="300" height="300"
+      onmousemove="canvas_getCoordinates(event)"
+      onmouseout="canvas_clearCoordinates()">
+      </canvas>
+    </div>
+
+    <footer>
+      <div id="id-footer"></div>
+    </footer>
+
+    <script type="text/javascript">
+      var idc = document.getElementById("id-canvas");
+      var ctx = idc.getContext("2d"); // 获取画布上下文环境
+      
+      ctx.fillStyle = "#FF0000"; // 画布填充风格
+      ctx.fillRect(50, 50, 50, 35); // 画布填充矩形
+
+      ctx.beginPath(); // 开始画布路径
+      ctx.arc(100,100,35,0,Math.PI*2,true);
+      ctx.closePath(); // 结束画布路径
+      ctx.fill(); // 画布填充
+
+      ctx.font="16px 宋体";
+      ctx.fillText("画布canvas标签元素", 50, 175, 150);
+
+      function canvas_getCoordinates(e) {
+        x = e.clientX;
+        y = e.clientY;
+        document.getElementById("id-footer").innerHTML="画布canvas坐标：(" + x + "," + y + ")";
+      }
+      function canvas_clearCoordinates() {
+        document.getElementById("id-footer".innerHTML="画布canvas坐标：");
+      }
+    </script>
+
+  </body>
+</html>
