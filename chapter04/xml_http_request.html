@@ -123,6 +123,52 @@
       function uploadCanceled(evt) {
         alert("The upload has been canceled by the user or the browser dropped the connection.");
       }
+
+      // xhr二进制数据
+      function xhr_blob() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState==4 && xhr.status==200) {
+            var blob = new Blob([xhr.response], {type:'image/png'});
+            console.log(blob + ", size:" + blob.size);
+            alert(blob + "\nsize:" + blob.size);
+          } else {
+          }
+        }
+        xhr.open("GET", "./image/img_1.png");
+        xhr.responseType='blob';
+        xhr.send();
+      }
+
+      // xhr二进制数据2
+      function xhr_blob2() {
+        var xhr = new XMLHttpRequest();
+        xhr.onprogress=xhr_blob2_progress;
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState==4 && xhr.status==200) {
+            var arrayBuffer = xhr.response;
+            if (arrayBuffer) {
+              var showMsg ="";
+              var byteArray = new Uint8Array(arrayBuffer);
+              // for (var i = 0; i < byteArray.byteLength; i++) {
+              //   showMsg += (byteArray[i] + "-");
+              // }
+              alert("completed");
+              //document.getElementById("id-show-blob-byte").innerHTML=showMsg;
+            }
+          } else {
+          }
+        }
+        xhr.open("GET", "./media/video.mp4", true);
+        xhr.responseType='arraybuffer';
+        xhr.send();
+      }
+      function xhr_blob2_progress() {
+        if (event.lengthComputable) {
+          var percentComplete = event.loaded/event.total;
+          document.getElementById("id-show-blob-byte").innerHTML=percentComplete;
+        }
+      }
     </script>
     <title>XMLHttpRequest Level 2</title>
   </head>
@@ -156,5 +202,13 @@
       </div>
       <div id="progressNumber"></div>
     </form>
+    <hr>
+    <h3>xhr二进制数据blob</h3>
+    <button type="button" onclick="xhr_blob()">xhr-blob</button>
+    <hr>
+    <h3>xhr二进制数据blob2</h3>
+    <button type="button" onclick="xhr_blob2()">xhr-blob2</button>
+    <p id="id-show-blob-byte"></p>
+    <hr>
   </body>
 </html>
