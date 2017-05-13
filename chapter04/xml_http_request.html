@@ -203,12 +203,20 @@
       <div id="progressNumber"></div>
     </form>
     <hr>
-    <h3>xhr二进制数据blob</h3>
-    <button type="button" onclick="xhr_blob()">xhr-blob</button>
+    <h3>xhr二进制数据: Blob</h3>
+    <button type="button" onclick="xhr_blob()">xhr-Blob</button>
     <hr>
-    <h3>xhr二进制数据blob2</h3>
-    <button type="button" onclick="xhr_blob2()">xhr-blob2</button>
+    <h3>xhr二进制数据: Uint8Array</h3>
+    <button type="button" onclick="xhr_blob2()">xhr-Uint8Array</button>
     <p id="id-show-blob-byte"></p>
+    <hr>
+    <p><h3>xhr的其他事件：</h3>
+      load: 传输成功完成<br>
+      abort: 传输被用户取消<br>
+      error: 传输中出现错误<br>
+      loadstart: 传输开始<br>
+      loadEnd: 传输结束，但是不知道成功还是失败
+    </p>
     <hr>
   </body>
 </html>
