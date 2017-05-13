@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+      function xhr_send_login() {
+
+        // 遍历form
+        var formStr = "";
+        for(var f=0;f<document.forms.length;f++){
+          var form=document.forms[f];
+          formStr += "-----" + form.id + "-----\n";
+          //遍历指定form表单所有元素
+          for(var i=0;i<form.length;i++){
+            var element=form[i];
+            formStr += element.id + ":" + element.value + "\n";
+          }
+        }
+        alert(formStr);
+        //alert(document.getElementById("id-form-login"));
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://www.baidu.com", true);
+        xhr.send();
+      }
+    </script>
+    <title>html5 forms</title>
+  </head>
+  <body>
+    <h3>autocomplete=on/off</h3>
+    <h3>autofocus:加载时自动获取焦点</h3>
+    <hr>
+    <form action="#" method="get" autocomplete="on" id="id-form-login">
+      <label>账号：</label>
+      <input id="id-username" type="text" placeholder="autofocus" autofocus="autofocus" autocomplete="on"/><br>
+      <label>密码：</label>
+      <input id="id-password" type="password" placeholder="!autofocus" autocomplete="off"/><br>
+      <input type="submit" value="form域内提交"/>
+    </form>
+    <button type="button" onclick="xhr_send_login()">form域外js提交</button><br>
+    <label>写在form域外，但是通过form属性加入到form中</label>
+    <input id="id-extra" type="text" form="id-form-login" required="required"/><br>
+    <hr>
+    <h3>另外html5还增加了novalidate, multiple, list, min, max, step等</h3>
+  </body>
+</html>
