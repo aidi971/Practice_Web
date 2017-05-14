@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>html5 web存储</title>
+  </head>
+  <body>
+    <p>
+      html5规范提供了两种在客户端存储数据的新方法：<br>
+      localStorage:没有时间限制的数据存储<br>
+      sessionStorage:针对一个session的数据存储
+    </p>
+    <hr>
+    <h3>localstorage: 模拟计数器，在重新打开浏览器后，计数器增加</h3>
+    <div id="id-visitor-counts-local"></div>
+    <hr>
+    <script type="text/javascript">
+      if (localStorage.pagecount) {
+        localStorage.pagecount = Number(localStorage.pagecount) + 1;
+      } else {
+        localStorage.pagecount = 1;
+      }
+      document.getElementById('id-visitor-counts-local').innerHTML="Visists:"+localStorage.pagecount+" times.";
+    </script>
+    <h3>sessionStorage: 针对一个Session，关闭浏览器后，相关数据即被删除</h3>
+    <div id="id-visitor-counts-session"></div>
+    <script type="text/javascript">
+      if (sessionStorage.pagecount) {
+        sessionStorage.pagecount = Number(sessionStorage.pagecount) + 1;
+      } else {
+        sessionStorage.pagecount = 1;
+      }
+      document.getElementById('id-visitor-counts-session').innerHTML="Visists:"+sessionStorage.pagecount+" times.";
+    </script>
+    <hr>
+  </body>
+</html>
