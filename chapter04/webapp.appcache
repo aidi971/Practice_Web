@@ -1,0 +1,22 @@
+CACHE MANIFEST
+
+# 2017-01-01, should start with "CACHE MANIFEST"
+
+# files should be cached after first downloading
+./css/style.css
+./image/img_0.png
+./image/img_1.png
+./image/img_2.png
+./image/img_3.png
+./image/img_4.png
+./image/img_5.png
+./image/img_6.png
+./image/img_7.png
+./js/manifest.js
+
+NETWORK:
+# files should connect with server and will NOT be cached
+
+FALBACK:
+# backpage when some pages cannot be accessed
+/404.html
