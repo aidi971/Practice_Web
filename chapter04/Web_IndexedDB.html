@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+      // 检查是否支持
+      function indexedDB_check(){
+        alert("window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;");
+        window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+        if (!window.indexedDB) {
+          alert("真遗憾！此浏览器不支持IndexedDB……");
+        } else {
+          alert("恭喜！此浏览器支持IndexedDB！！！");
+        }
+      }
+      // 打开
+      function indexedDB_open() {
+        alert("window.indexedDB.open(\"demoDB\",3);\ndb = event.target.result;\nvar objectStore = db.createObjectStore(\"tableName\", {keyPath:\"id\"});");
+        var db;
+        var dbVersion = 3;
+        var request = window.indexedDB.open("demoDB",3);
+        request.onerror = function(event) {
+          //alert("打开数据库(demoDB)失败");
+          return null;
+        }
+        request.onupgradeneeded = function(event) {
+          // 版本号不同时会被调用
+          console.log("upgradding");
+          //alert("upgradding (demoDB)");
+          db = event.target.result;
+          var objectStore = db.createObjectStore("tableName", {keyPath:"id"});
+        }
+        request.onsuccess = function(event) {
+          //alert("打开数据库(demoDB)成功");
+          db = event.target.result;
+          return db;
+        }
+      }
+
+      // 插入
+      function indexedDB_insert(){
+        alert("var transaction = db.transaction([\"tableName\"], \"readwrite\");\nvar objectStore = transaction.objectStore(\"tableName\");objectStore.add({id:\"123456\", name:\"jack\"});");
+        var db;
+        var request = window.indexedDB.open("demoDB",3);
+        request.onerror = function(event) {
+          //alert("打开数据库(demoDB)失败");
+        }
+        request.onupgradeneeded = function(event) {
+          // 版本号不同时会被调用
+          console.log("upgradding");
+          //alert("upgradding (demoDB)");
+          db = event.target.result;
+          var objectStore = db.createObjectStore("tableName", {keyPath:"id"});
+        }
+        request.onsuccess = function(event) {
+          //alert("打开数据库(demoDB)成功");
+          db = event.target.result;
+          var transaction = db.transaction(["tableName"], "readwrite");
+          transaction.oncomplete=function(event) {
+            console.log("success");
+          };
+          transaction.onerror=function(event) {
+            console.log("error:" + event);
+          };
+          var objectStore = transaction.objectStore("tableName");
+          objectStore.add({id:"123456", name:"jack"});
+        }
+      }
+      function indexedDB_delete(){
+        //db.transaction(["tableName"], "readwrite").objectStore("tableName").delete(id);
+        alert("db.transaction([\"tableName\"], \"readwrite\").objectStore(\"tableName\").delete(id)");
+      }
+      function indexedDB_query(){
+        alert("var request=db.transaction([\"tableName\"], \"readwrite\").objectStore(\"tableName\").get(id));\nrequest.result.name");
+      }
+      function indexedDB_update(){
+        /*
+        var transaction = db.transaction(["tableName"], "readwrite");
+        var objectStore = transaction.objectStore("tableName");
+        var request = objectStore.get(id);
+        request.onsuccess = function(event) {
+          console.log("updating: " + request.result.name " to " + name);
+          request.result.name = name;
+          objectStore.put(request.result);
+        }
+        */
+      }
+    </script>
+    <title>Web索引数据库：IndexedDB</title>
+  </head>
+  <body>
+    <h3>查询是否支持IndexedDB</h3>
+    <button type="button" onclick="indexedDB_check();">查询</button>
+    <p>
+      <pre>
+        window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+      </pre>
+    </p>
+    <hr>
+    <h3>打开</h3>
+    <button type="button" onclick="indexedDB_open();">打开</button>
+    <p>
+      <pre>
+      var db;
+      var dbVersion = 3;
+      var request = window.indexedDB.open("demoDB",3);
+      request.onerror = function(event) {
+        //alert("打开数据库(demoDB)失败");
+        return null;
+      }
+      request.onupgradeneeded = function(event) {
+        // 版本号不同时会被调用
+        console.log("upgradding");
+        //alert("upgradding (demoDB)");
+        db = event.target.result;
+        var objectStore = db.createObjectStore("tableName", {keyPath:"id"});
+      }
+      request.onsuccess = function(event) {
+        //alert("打开数据库(demoDB)成功");
+        db = event.target.result;
+        return db;
+      }
+      </pre>
+    </p>
+    <hr>
+    <h3>插入</h3>
+    <button type="button" onclick="indexedDB_insert();">插入</button>
+    <p>
+      <pre>
+        var db;
+        var request = window.indexedDB.open("demoDB",3);
+        request.onerror = function(event) {
+          //alert("打开数据库(demoDB)失败");
+        }
+        request.onupgradeneeded = function(event) {
+          // 版本号不同时会被调用
+          console.log("upgradding");
+          //alert("upgradding (demoDB)");
+          db = event.target.result;
+          var objectStore = db.createObjectStore("tableName", {keyPath:"id"});
+        }
+        request.onsuccess = function(event) {
+          //alert("打开数据库(demoDB)成功");
+          db = event.target.result;
+          var transaction = db.transaction(["tableName"], "readwrite");
+          transaction.oncomplete=function(event) {
+            console.log("success");
+          };
+          transaction.onerror=function(event) {
+            console.log("error:" + event);
+          };
+          var objectStore = transaction.objectStore("tableName");
+          objectStore.add({id:"123456", name:"jack"});
+        }
+      </pre>
+    </p>
+    <hr>
+    <h3>删除</h3>
+    <button type="button" onclick="indexedDB_delete();">删除</button>
+    <p>
+      <pre>
+        db.transaction(["tableName"], "readwrite").objectStore("tableName").delete(id)");
+      </pre>
+    </p>
+    <hr>
+    <h3>查询</h3>
+    <button type="button" onclick="indexedDB_query();">查询</button>
+    <p>
+      <pre>
+        var request=db.transaction(["tableName"], "readwrite").objectStore("tableName").get(id));
+        request.result.name;
+      </pre>
+    </p>
+    <hr>
+    <h3>更新</h3>
+    <button type="button" onclick="indexedDB_update();">更新</button>
+    <p>
+      <pre>
+        var transaction = db.transaction(["tableName"], "readwrite");
+        var objectStore = transaction.objectStore("tableName");
+        var request = objectStore.get(id);
+        request.onsuccess = function(event) {
+          console.log("updating: " + request.result.name " to " + name);
+          request.result.name = name;
+          objectStore.put(request.result);
+        }
+      </pre>
+    </p>
+    <hr>
+  </body>
+</html>
