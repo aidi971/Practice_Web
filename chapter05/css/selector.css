@@ -1,0 +1,27 @@
+/*选择器*/
+
+/*
+选择器
+*/
+* {
+  background-color:yellow;
+}
+
+/*
+选择并设置 class="hello" 的元素的样式
+*/
+.hello {
+  color: red;
+  font-size: 15px/1.5em;
+}
+
+p.welcome {
+  color: green;
+}
+
+/*
+为 id="mitsuha" 的元素设置样式：
+*/
+#mitsuha {
+  color: brown;
+}
