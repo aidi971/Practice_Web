@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="./css/sprites.css" rel="stylesheet">
+    <script src="./jquery/jquery.js"></script>
+  	<script src="./jquery/jquery-ui.js"></script>
+    <style>
+  	body{
+  		font: 62.5% "Trebuchet MS", sans-serif;
+  		margin: 50px;
+  	}
+  	.demoHeaders {
+  		margin-top: 2em;
+  	}
+  	#dialog-link span.ui-icon {
+  		margin: 0 5px 0 0;
+  		position: absolute;
+  		left: .2em;
+  		top: 50%;
+  		margin-top: -8px;
+  	}
+  	#icons {
+  		margin: 0;
+  		padding: 0;
+  	}
+  	#icons li {
+  		margin: 2px;
+  		position: relative;
+  		padding: 4px 0;
+  		cursor: pointer;
+  		float: left;
+  		list-style: none;
+  	}
+  	#icons span.ui-icon {
+  		float: left;
+  		margin: 0 4px;
+  	}
+  	</style>
+    <title>css sprites</title>
+  </head>
+  <body>
+    <h3>一种网页图片应用处理方式：</h3>
+    <p>
+      具体来讲：就是将一个页面涉及的所有零星图片都集成到一张图片中。
+    </p>
+    <p>
+      注：把n张小图片的n个http请求，缩减为1个http请求到1张图片(此图片将n个图片拼成1个)，通过位置来确定每个图片。<br>
+      适合需要使用n多个小图片的情形。
+    </p>
+    <p>
+      有工具自动生成
+    </p>
+
+    <hr>
+    <ul id="icons" class="ui-widget ui-helper-clearfix">
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-n"><span class="ui-icon ui-icon-carat-1-n"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-ne"><span class="ui-icon ui-icon-carat-1-ne"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-e"><span class="ui-icon ui-icon-carat-1-e"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-se"><span class="ui-icon ui-icon-carat-1-se"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-s"><span class="ui-icon ui-icon-carat-1-s"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-sw"><span class="ui-icon ui-icon-carat-1-sw"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-w"><span class="ui-icon ui-icon-carat-1-w"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-nw"><span class="ui-icon ui-icon-carat-1-nw"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-2-n-s"><span class="ui-icon ui-icon-carat-2-n-s"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-2-e-w"><span class="ui-icon ui-icon-carat-2-e-w"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-n"><span class="ui-icon ui-icon-triangle-1-n"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-ne"><span class="ui-icon ui-icon-triangle-1-ne"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-e"><span class="ui-icon ui-icon-triangle-1-e"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-se"><span class="ui-icon ui-icon-triangle-1-se"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-s"><span class="ui-icon ui-icon-triangle-1-s"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-sw"><span class="ui-icon ui-icon-triangle-1-sw"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-w"><span class="ui-icon ui-icon-triangle-1-w"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-nw"><span class="ui-icon ui-icon-triangle-1-nw"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-2-n-s"><span class="ui-icon ui-icon-triangle-2-n-s"></span></li>
+    	<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-2-e-w"><span class="ui-icon ui-icon-triangle-2-e-w"></span></li>
+    </ul>
+
+    <script>
+    // Hover states on the static widgets
+    $( "#icons li" ).hover(
+    	function() {
+    		$( this ).addClass( "ui-state-hover" );
+    	},
+    	function() {
+    		$( this ).removeClass( "ui-state-hover" );
+    	}
+    );
+    </script>
+
+  </body>
+</html>

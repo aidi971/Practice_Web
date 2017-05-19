@@ -61,3 +61,4 @@ Temporary Items
 *.jpg
 *.jpeg
 *.ico
+!/chapter05/images/*.png
